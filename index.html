@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon API</title>
+    <!-- Favicon -->
+    <link rel="icon" href="img/ball.png" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <!-- Custom JS -->
@@ -20,7 +22,10 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-light mb-3">
         <div class="container-fluid">
-            <a class="navbar-brand h1 mb-0" href="#">PokeAPI</a>
+            <a class="navbar-brand h1 mb-0" href="#">
+              <img src="img/ball.png" alt="pokeball" width="30" height="30" class="d-inline-block align-text-top">
+              PokeAPI
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -30,21 +35,21 @@
                   <a class="navAccueil nav-link active" aria-current="page" href="/">Accueil</a>
                 </li>
                 <li class="nav-item">
-                  <a class="navPokedex nav-link" onclick="pokeAPI()">Pokedex</a>
+                  <a class="navPokedex nav-link" onclick="showPokedex()">Pokedex</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="navGenerations nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Generations
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Generation I</a></li>
-                      <li><a class="dropdown-item" href="#">Generation II</a></li>
-                      <li><a class="dropdown-item" href="#">Generation III</a></li>
-                      <li><a class="dropdown-item" href="#">Generation IV</a></li>
-                      <li><a class="dropdown-item" href="#">Generation V</a></li>
-                      <li><a class="dropdown-item" href="#">Generation VI</a></li>
-                      <li><a class="dropdown-item" href="#">Generation VII</a></li>
-                      <li><a class="dropdown-item" href="#">Generation VIII</a></li>
+                      <li><a class="dropdown-item" onclick="whatGeneration(1)">Generation I</a></li>
+                      <li><a class="dropdown-item" onclick="whatGeneration(2)">Generation II</a></li>
+                      <li><a class="dropdown-item" onclick="whatGeneration(3)">Generation III</a></li>
+                      <li><a class="dropdown-item" onclick="whatGeneration(4)">Generation IV</a></li>
+                      <li><a class="dropdown-item" onclick="whatGeneration(5)">Generation V</a></li>
+                      <li><a class="dropdown-item" onclick="whatGeneration(6)">Generation VI</a></li>
+                      <li><a class="dropdown-item" onclick="whatGeneration(7)">Generation VII</a></li>
+                      <li><a class="dropdown-item" onclick="whatGeneration(8)">Generation VIII</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
