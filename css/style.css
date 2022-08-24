@@ -1,0 +1,85 @@
+body {
+    background-color: rgb(221, 221, 221);
+}
+
+main {
+    margin: 0 2rem 0 2rem;
+}
+
+h1 {
+    font-family: 'Press Start 2P', Calibri, sans-serif;
+    font-size: x-small;
+    text-align: center;
+}
+
+.divPresentation {
+    font-family: 'Press Start 2P', Calibri, sans-serif;
+    font-size: x-small;
+}
+
+.navbar-collapse .navbar-nav .nav-item {
+    cursor: pointer;
+}
+
+.content {
+    height: 50vh;
+}
+
+.allPokemon {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    overflow: auto;
+}
+
+.pokedex {
+    display: flex;
+    justify-content: space-around;
+    margin: 4rem 0 4rem 0;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.linkLePokemon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+.lePokemon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5rem 0 5rem;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+.lePokemon img {
+    width: 200%;
+}
+
+.lePokemon p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: black;
+}
+
+.titleGenerationSeparator {
+    font-family: 'Press Start 2P', Calibri, sans-serif;
+    text-align: center;
+}
+
+.generationSeparator {
+    width: 100%;
+    margin: 2rem 0 1rem 0;
+}
