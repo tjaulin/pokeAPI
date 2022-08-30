@@ -4,11 +4,13 @@
 //TODO exemple le pokemon numéro 762
 //TODO Voir la fonction telechargerDonneesPokemons() dans le projet de ronan sur le fichier DAO.js
 //TODO Son repo : https://bitbucket.org/setsunadilandau/tp-pokedex-supvinci/src/main/
- 
+
+//TODO https://developer.mozilla.org/fr/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage
+
 window.onload = init;
 let navbar = [];
 
-function init() {    
+function init(bool) {    
     /*  Navbar - On rempli le tableau de navbar */
     navAccueil = document.querySelector(".navAccueil");
     navPokedex = document.querySelector(".navPokedex");
@@ -18,13 +20,18 @@ function init() {
     
     divPokedex = document.createElement("div");
     divPokedex.classList.add("pokedex");
+    divContentSheetPokemon = document.createElement("div");
+    divContentSheetPokemon.classList.add("contentSheetPokemon");
     main = document.querySelector(".main");
     content = document.querySelector(".content");
     divAllPokemon = document.querySelector(".allPokemon");
-    pokedex = document.querySelector(".pokedex");
     divPresentation = document.querySelector(".divPresentation");
     title = document.querySelector(".title");
-    aleaPokemon();
+    if (bool == true) {
+        showPokedex();
+    } else {
+        aleaPokemon();
+    }
     whatGeneration;
 }
 
@@ -53,7 +60,7 @@ async function aleaPokemon() {
         divAllPokemon.append(divLePokemon);
     }
 }
- 
+
 async function showPokedex() {
     /*  Navbar - On supprime la classe "active" et on la remet au bonne endroit */
     navbar.forEach(item => {
@@ -66,8 +73,16 @@ async function showPokedex() {
     });
 
     /* On remplace le titre et on supprime certains éléments du DOM */
-    content.remove();
-    divPresentation.remove();
+    if (content) {
+        content.remove();
+    }
+    if (divPresentation) {
+        divPresentation.remove();
+    }
+    if (divContentSheetPokemon) {
+        divContentSheetPokemon.remove();
+    }
+
     title.innerText = "Pokedex";
 
     let initPokeApi = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=905`);
@@ -120,7 +135,9 @@ async function showPokedex() {
         const jsonPokemon = jsonPokemons[i];
         const jsonEspece = jsonEspeces[i];
         const divLePokemon = document.createElement("div");
-        divLePokemon.classList.add("lePokemon");
+        divLePokemon.classList.add("lePokemon");        
+        divLePokemon.addEventListener("click", pokemonSheet.bind(null, jsonPokemon, jsonEspece));
+        // https://askcodez.com/comment-passer-des-arguments-a-la-methode-addeventlistener-de-la-fonction-decouteur.html
         const imagePokemon = document.createElement("img");
         imagePokemon.src = jsonPokemon.sprites.front_default
         const nomPokemon = document.createElement("p");
@@ -182,6 +199,93 @@ async function showPokedex() {
         divPokedex.append(divLePokemon);
     }
     main.append(divPokedex);
+}
+
+async function pokemonSheet(jsonPokemon, jsonEspece) {
+
+    divContentSheetPokemon.remove();
+
+    /* Création du bouton retour */
+    const btnRetour = document.createElement("div");
+    btnRetour.classList.add("btnRetour");
+    btnRetour.innerText = "Retour";
+    btnRetour.setAttribute('onclick', `returnPokedex(${true})`);
+
+    divPokedex.remove();
+    for (let i = 0; i < jsonEspece.names.length; i++) {
+        if (jsonEspece.names[i].language.name == "fr") {
+            title.innerText = jsonEspece.names[i].name
+        }
+    }
+    console.log(jsonPokemon);
+    console.log(jsonEspece);
+    // Description du pokedex du pokemon selon les différents jeux
+    const divDescPokedex = document.createElement("div");
+    divDescPokedex.classList.add("divDescPokedex");
+    for (let i = 0; i < jsonEspece.flavor_text_entries.length; i++) {
+        const versionJeu = jsonEspece.flavor_text_entries[i].version.name;
+        if (jsonEspece.flavor_text_entries[i].language.name == "fr") {
+            const titleDescPokedex = document.createElement("h5");
+            const pDescPokedex = document.createElement("p");
+            switch (versionJeu) {
+                case ("black", "white"):
+                    titleDescPokedex.innerText = "Pokemon Noir & Blanc";
+                    pDescPokedex.innerHTML = jsonEspece.flavor_text_entries[i].flavor_text;
+                    divDescPokedex.append(titleDescPokedex, pDescPokedex);
+                    break;
+                case ("x"):
+                    titleDescPokedex.innerText = "Pokemon X";
+                    pDescPokedex.innerHTML = jsonEspece.flavor_text_entries[i].flavor_text;
+                    divDescPokedex.append(titleDescPokedex, pDescPokedex);
+                    break;
+
+                case ("y"):
+                    titleDescPokedex.innerText = "Pokemon Y";
+                    pDescPokedex.innerHTML = jsonEspece.flavor_text_entries[i].flavor_text;
+                    divDescPokedex.append(titleDescPokedex, pDescPokedex);
+                    break;
+
+                case ("omega-ruby", "alpha-sapphire"):
+                    titleDescPokedex.innerText = "Pokemon Rubis Oméga & Saphir Alpha";
+                    pDescPokedex.innerHTML = jsonEspece.flavor_text_entries[i].flavor_text;
+                    divDescPokedex.append(titleDescPokedex, pDescPokedex);
+                    break;
+
+                case ("lets-go-pikachu", "lets-go-eevee"):
+                    titleDescPokedex.innerText = "Pokemon Let's go, Pikachu & Let's go, Évoli";
+                    pDescPokedex.innerHTML = jsonEspece.flavor_text_entries[i].flavor_text;
+                    divDescPokedex.append(titleDescPokedex, pDescPokedex);
+                    break;
+
+                case ("sword"):
+                    titleDescPokedex.innerText = "Pokemon Épée";
+                    pDescPokedex.innerHTML = jsonEspece.flavor_text_entries[i].flavor_text;
+                    divDescPokedex.append(titleDescPokedex, pDescPokedex);
+                    break;
+
+                case ("shield"):
+                    titleDescPokedex.innerText = "Pokemon Bouclier";
+                    pDescPokedex.innerHTML = jsonEspece.flavor_text_entries[i].flavor_text;
+                    divDescPokedex.append(titleDescPokedex, pDescPokedex);
+                    break;
+            }
+        }
+    }
+
+    //Poids du pokemon
+    const poidsPokemon = document.createElement("p");
+    poidsPokemon.innerText = `${jsonPokemon.weight}kg`;
+
+    divContentSheetPokemon.append(btnRetour, divDescPokedex, poidsPokemon);
+    main.append(divContentSheetPokemon);
+
+}
+
+function returnPokedex(bool) {
+    if (bool == true) {
+        divContentSheetPokemon.remove();
+        init(true);
+    }
 }
 
 async function whatGeneration(generation) {
