@@ -239,6 +239,7 @@ async function showPokedex() {
 async function pokemonSheet(jsonPokemon, jsonEspece) {
     
     divContentSheetPokemon.remove();
+    sectionPage.innerHTML = "";
     /* Création du bouton retour */
     const btnRetour = document.createElement("div");
     btnRetour.classList.add("btnRetour");
