@@ -35,7 +35,7 @@
                   <a class="navAccueil nav-link active" aria-current="page" href="/">Accueil</a>
                 </li>
                 <li class="nav-item">
-                  <a class="navPokedex nav-link" onclick="showPokedex()">Pokedex</a>
+                  <a class="navPokedex nav-link" onclick="returnPokedex(true)">Pokedex</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="navGenerations nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -65,9 +65,11 @@
             <p>Bienvenue sur le site PokeAPI</p>
             <p>Ce site présente les différentes fonctionnalitées que propose l'api gratuite du même nom <a class="text-decoration-none" href="https://pokeapi.co/">PokeApi</a></p>
         </div>
-        <div class="content d-flex justify-content-center align-items-center">
-            <div class="allPokemon"></div>
-        </div>
+        <section class="sectionPage">
+          <div class="content d-flex justify-content-center align-items-center">
+              <div class="allPokemon"></div>
+          </div>
+        </section>
     </main>
 </body>
 </html>

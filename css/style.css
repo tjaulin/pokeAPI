@@ -12,6 +12,11 @@ h1 {
     text-align: center;
 }
 
+nav {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
 .btnRetour {
     position: absolute;
     top: 70px;
@@ -81,9 +86,14 @@ h1 {
     justify-content: center;
     align-items: center;
     margin: 0 5rem 0 5rem;
+    width: 100px;
 
     -webkit-user-select: none;
     -moz-user-select: none;
+}
+
+.lePokemon:hover {
+    cursor: pointer;
 }
 
 .lePokemon img {
@@ -106,3 +116,137 @@ h1 {
     width: 100%;
     margin: 2rem 0 1rem 0;
 }
+
+/* Fiche Pokemon */
+.contentSheetPokemon {
+    
+}
+
+.titleNameENPokemon {
+    font-family: 'Press Start 2P', Calibri, sans-serif;
+    font-size: small;
+    text-align: center;
+}
+
+.detailsPokemon {
+    width: 30%;
+}
+
+.detailsPokemon img {
+    width: 50%;
+}
+
+.divDescPokedex {
+    width: 30%;
+}
+
+.divDescPokedex h2 {
+    text-align: center;
+}
+
+.divDescPokedex p {
+    margin-left: 2rem;
+}
+
+.divDescPokedex p, .divDescPokedex h5 {
+    font-size: 75%;
+}
+
+.typesPokemon {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.typesPokemon p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    margin: 0 0.5rem 0 0.5rem;
+    border-radius: 50px;
+}
+
+/* Loader Animation */
+section .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+  
+section .loader h2 {
+    font-family: 'Press Start 2P', Calibri, sans-serif;
+    font-size: large;
+    color: black;
+    font-weight: 300;
+    letter-spacing: 10px;
+}
+
+section .loader .loaderPoint {
+    display: flex;
+}
+
+section .loader .loaderPoint .point {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    margin: 20px 10px;
+    transform: scale(0.1);
+    border-radius: 50%;
+    animation: animateDot 2s linear infinite;
+    animation-delay: calc(0.1s * var(--i));
+    background: black;
+    box-shadow: 0 0 10px black,
+                0 0 20px black,
+                0 0 40px black,
+                0 0 60px black,
+                0 0 80px black,
+                0 0 100px black;
+}
+@keyframes animateDot {
+    0%
+    {
+        transform: scale(0.1);
+    }
+    10%
+    {
+        transform: scale(1);
+    }
+    50%
+    {
+        transform: scale(0.1);
+    }
+    100%
+    {
+        transform: scale(0.1);
+    }
+}
+
+
+
+/* Couleur des types */
+
+.background-color-normal { background: -webkit-linear-gradient(180deg, #a4acaf 50%, #a4acaf 50%);background: -ms-linear-gradient(180deg, #a4acaf 50%, #a4acaf 50%);background: -moz-linear-gradient(180deg, #a4acaf 50%, #a4acaf 50%);background: -o-linear-gradient(180deg, #a4acaf 50%, #a4acaf 50%);background: linear-gradient(180deg, #a4acaf 50%, #a4acaf 50%);background-color: #a4acaf;color: #fff;}
+.background-color-combat { background: -webkit-linear-gradient(180deg, #d56723 50%, #d56723 50%);background: -ms-linear-gradient(180deg, #d56723 50%, #d56723 50%);background: -moz-linear-gradient(180deg, #d56723 50%, #d56723 50%);background: -o-linear-gradient(180deg, #d56723 50%, #d56723 50%);background: linear-gradient(180deg, #d56723 50%, #d56723 50%);background-color: #d56723;color: #fff;}
+.background-color-vol { background: -webkit-linear-gradient(180deg, #3dc7ef 50%, #bdb9b8 50%);background: -ms-linear-gradient(180deg, #3dc7ef 50%, #bdb9b8 50%);background: -moz-linear-gradient(180deg, #3dc7ef 50%, #bdb9b8 50%);background: -o-linear-gradient(180deg, #3dc7ef 50%, #bdb9b8 50%); background: linear-gradient(180deg, #3dc7ef 50%, #bdb9b8 50%);background-color: #3dc7ef;color: #fff;}
+.background-color-poison { background: -webkit-linear-gradient(180deg, #b97fc9 50%, #b97fc9 50%);background: -ms-linear-gradient(180deg, #b97fc9 50%, #b97fc9 50%);background: -moz-linear-gradient(180deg, #b97fc9 50%, #b97fc9 50%);background: -o-linear-gradient(180deg, #b97fc9 50%, #b97fc9 50%);background: linear-gradient(180deg, #b97fc9 50%, #b97fc9 50%);background-color: #b97fc9;color: #fff;}
+.background-color-sol { background: -webkit-linear-gradient(180deg, #f7de3f 50%, #ab9842 50%);background: -ms-linear-gradient(180deg, #f7de3f 50%, #ab9842 50%);background: -moz-linear-gradient(180deg, #f7de3f 50%, #ab9842 50%);background: -o-linear-gradient(180deg, #f7de3f 50%, #ab9842 50%);background: linear-gradient(180deg, #f7de3f 50%, #ab9842 50%);background-color: #f7de3f;color: #fff;}
+.background-color-roche { background: -webkit-linear-gradient(180deg, #a38c21 50%, #a38c21 50%);background: -ms-linear-gradient(180deg, #a38c21 50%, #a38c21 50%);background: -moz-linear-gradient(180deg, #a38c21 50%, #a38c21 50%);background: -o-linear-gradient(180deg, #a38c21 50%, #a38c21 50%);background: linear-gradient(180deg, #a38c21 50%, #a38c21 50%);background-color: #a38c21;color: #fff;}
+.background-color-insecte { background: -webkit-linear-gradient(180deg, #729f3f 50%, #729f3f 50%);background: -ms-linear-gradient(180deg, #729f3f 50%, #729f3f 50%);background: -moz-linear-gradient(180deg, #729f3f 50%, #729f3f 50%);background: -o-linear-gradient(180deg, #729f3f 50%, #729f3f 50%);background: linear-gradient(180deg, #729f3f 50%, #729f3f 50%);background-color: #729f3f;color: #fff;}
+.background-color-spectre { background: -webkit-linear-gradient(180deg, #7b62a3 50%, #7b62a3 50%);background: -ms-linear-gradient(180deg, #7b62a3 50%, #7b62a3 50%);background: -moz-linear-gradient(180deg, #7b62a3 50%, #7b62a3 50%);background: -o-linear-gradient(180deg, #7b62a3 50%, #7b62a3 50%);background: linear-gradient(180deg, #7b62a3 50%, #7b62a3 50%);background-color: #7b62a3;color: #fff;}
+.background-color-acier { background: -webkit-linear-gradient(180deg, #9eb7b8 50%, #9eb7b8 50%);background: -ms-linear-gradient(180deg, #9eb7b8 50%, #9eb7b8 50%);background: -moz-linear-gradient(180deg, #9eb7b8 50%, #9eb7b8 50%);background: -o-linear-gradient(180deg, #9eb7b8 50%, #9eb7b8 50%);background: linear-gradient(180deg, #9eb7b8 50%, #9eb7b8 50%);background-color: #9eb7b8;color: #fff;}
+.background-color-feu { background: -webkit-linear-gradient(180deg, #fd7d24 50%, #fd7d24 50%); background: -ms-linear-gradient(180deg, #fd7d24 50%, #fd7d24 50%);background: -moz-linear-gradient(180deg, #fd7d24 50%, #fd7d24 50%);background: -o-linear-gradient(180deg, #fd7d24 50%, #fd7d24 50%);background: linear-gradient(180deg, #fd7d24 50%, #fd7d24 50%);background-color: #fd7d24;color: #fff; }
+.background-color-eau { background: -webkit-linear-gradient(180deg, #4592c4 50%, #4592c4 50%);background: -ms-linear-gradient(180deg, #4592c4 50%, #4592c4 50%);background: -moz-linear-gradient(180deg, #4592c4 50%, #4592c4 50%);background: -o-linear-gradient(180deg, #4592c4 50%, #4592c4 50%);background: linear-gradient(180deg, #4592c4 50%, #4592c4 50%);background-color: #4592c4;color: #fff;}
+.background-color-plante { background: -webkit-linear-gradient(180deg, #9bcc50 50%, #9bcc50 50%);background: -ms-linear-gradient(180deg, #9bcc50 50%, #9bcc50 50%);background: -moz-linear-gradient(180deg, #9bcc50 50%, #9bcc50 50%);background: -o-linear-gradient(180deg, #9bcc50 50%, #9bcc50 50%);background: linear-gradient(180deg, #9bcc50 50%, #9bcc50 50%);background-color: #9bcc50;color: #fff;}
+.background-color-electrik { background: -webkit-linear-gradient(180deg, #eed535 50%, #eed535 50%);background: -ms-linear-gradient(180deg, #eed535 50%, #eed535 50%);background: -moz-linear-gradient(180deg, #eed535 50%, #eed535 50%);background: -o-linear-gradient(180deg, #eed535 50%, #eed535 50%);background: linear-gradient(180deg, #eed535 50%, #eed535 50%);background-color: #eed535; color: #fff;}
+.background-color-psy { background: -webkit-linear-gradient(180deg, #f366b9 50%, #f366b9 50%);background: -ms-linear-gradient(180deg, #f366b9 50%, #f366b9 50%);background: -moz-linear-gradient(180deg, #f366b9 50%, #f366b9 50%);background: -o-linear-gradient(180deg, #f366b9 50%, #f366b9 50%);background: linear-gradient(180deg, #f366b9 50%, #f366b9 50%);background-color: #f366b9;color: #fff;}
+.background-color-glace { background: -webkit-linear-gradient(180deg, #51c4e7 50%, #51c4e7 50%);background: -ms-linear-gradient(180deg, #51c4e7 50%, #51c4e7 50%);background: -moz-linear-gradient(180deg, #51c4e7 50%, #51c4e7 50%);background: -o-linear-gradient(180deg, #51c4e7 50%, #51c4e7 50%);background: linear-gradient(180deg, #51c4e7 50%, #51c4e7 50%);background-color: #51c4e7;color: #fff;}
+.background-color-dragon { background: -webkit-linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);background: -ms-linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);background: -moz-linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);background: -o-linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);background: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);background-color: #53a4cf;color: #fff;}
+.background-color-tenebre { background: -webkit-linear-gradient(180deg, #707070 50%, #707070 50%);background: -ms-linear-gradient(180deg, #707070 50%, #707070 50%);background: -moz-linear-gradient(180deg, #707070 50%, #707070 50%);background: -o-linear-gradient(180deg, #707070 50%, #707070 50%);background: linear-gradient(180deg, #707070 50%, #707070 50%);background-color: #707070;color: #fff;}
+.background-color-fee { background: -webkit-linear-gradient(180deg, #fdb9e9 50%, #fdb9e9 50%);background: -ms-linear-gradient(180deg, #fdb9e9 50%, #fdb9e9 50%);background: -moz-linear-gradient(180deg, #fdb9e9 50%, #fdb9e9 50%);background: -o-linear-gradient(180deg, #fdb9e9 50%, #fdb9e9 50%);background: linear-gradient(180deg, #fdb9e9 50%, #fdb9e9 50%);background-color: #fdb9e9;color: #fff;}
