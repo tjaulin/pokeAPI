@@ -1,3 +1,9 @@
+/* Design System */
+* {
+    scrollbar-width: thin; /* "auto" or "thin" */
+    scrollbar-color: black white; /* scroll thumb and track */
+}
+
 body {
     background-color: rgb(221, 221, 221);
 }
@@ -9,12 +15,39 @@ main {
 h1 {
     font-family: 'Press Start 2P', Calibri, sans-serif;
     font-size: x-small;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
 }
 
 nav {
     -webkit-user-select: none;
     -moz-user-select: none;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: white;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: black;
+    border-radius: 30px;
+    border: 3px solid white;
+}
+
+::-moz-scr
+
+.navbar-collapse .navbar-nav .nav-item {
+    cursor: pointer;
+}
+
+.content {
+    height: 50vh;
 }
 
 .btnRetour {
@@ -40,17 +73,11 @@ nav {
     color: white;
 }
 
+/* Accueil */
+
 .divPresentation {
     font-family: 'Press Start 2P', Calibri, sans-serif;
     font-size: x-small;
-}
-
-.navbar-collapse .navbar-nav .nav-item {
-    cursor: pointer;
-}
-
-.content {
-    height: 50vh;
 }
 
 .allPokemon {
@@ -61,13 +88,53 @@ nav {
     overflow: auto;
 }
 
+/* Pokedex */
+
 .pokedex {
     display: flex;
     justify-content: space-around;
-    margin: 4rem 0 4rem 0;
     flex-wrap: wrap;
     overflow: hidden;
 }
+
+.rechercherPokemon {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0 0 0;
+}
+
+.divInputRechercherPokemon {
+    width: 45%;
+}
+
+.divInputRechercherPokemon input {
+    width: 100%;
+    line-height: 28px;
+    border: 2px solid transparent;
+    border-bottom-color: #777;
+    padding: .2rem 0;
+    outline: none;
+    background-color: transparent;
+    color: #0d0c22;
+    transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.divInputRechercherPokemon input:focus, .divInputRechercherPokemon input:hover {
+    outline: none;
+    padding: .2rem 1rem;
+    border-radius: 1rem;
+    border-color: black;
+}
+
+.divInputRechercherPokemon input::placeholder {
+    color: #777;
+}
+
+.divInputRechercherPokemon input:focus::placeholder {
+    opacity: 0;
+    transition: opacity .3s;
+}
+
 
 .linkLePokemon {
     display: flex;
@@ -126,6 +193,11 @@ nav {
     font-family: 'Press Start 2P', Calibri, sans-serif;
     font-size: small;
     text-align: center;
+}
+
+.numPokedexNational {
+    color: gray;
+    font-size: small;
 }
 
 .detailsPokemon {

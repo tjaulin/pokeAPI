@@ -111,10 +111,13 @@ async function showPokedex() {
     const divRechercherPokemon = document.createElement("div");
     divRechercherPokemon.classList.add("rechercherPokemon");
     divRechercherPokemon.innerHTML = `
-    <div>
+    <div class="divInputRechercherPokemon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+        </svg>
         <input type="text" onkeyup="rechercherPokemon()" id="maRecherchePokemon" name="search"
-            placeholder="Rechercher sur le site…"
-            aria-label="Rechercher parmi le contenu du site"/>
+            placeholder="Rechercher un pokemon…" autocomplete="off"
+            aria-label="Rechercher un pokemon parmi le contenu du site"/>
     </div>
     `
     
@@ -179,6 +182,9 @@ async function showPokedex() {
         
         const divNewGeneration = document.createElement("div");
         divNewGeneration.classList.add("generationSeparator");
+        const iconeGeneration = document.createElement("i");
+        iconeGeneration.classList.add("bi", "bi-chevron-down");
+        divNewGeneration.append(iconeGeneration);
         const titleNewGeneraton = document.createElement("p")
         titleNewGeneraton.classList.add("titleGenerationSeparator")
         const hrNewGeneration = document.createElement("hr");
@@ -247,9 +253,25 @@ async function pokemonSheet(jsonPokemon, jsonEspece) {
     btnRetour.setAttribute('onclick', `returnPokedex(${true})`);
     
     divPokedex.remove();
+    let numPokedexNational = 0;
+    for(let i = 0; i < jsonEspece.pokedex_numbers.length; i++) {
+        if (jsonEspece.pokedex_numbers[i].pokedex.name == "national") {
+            numPokedexNational = jsonEspece.pokedex_numbers[i].entry_number;
+        }
+    }
+    let numBeforeNumPokedexNational = "";
+    if (numPokedexNational < 10) {
+        numBeforeNumPokedexNational = "00";
+    } else if (numPokedexNational >= 10 && numPokedexNational < 99){
+        numBeforeNumPokedexNational = "0";
+    }
+
     for (let i = 0; i < jsonEspece.names.length; i++) {
         if (jsonEspece.names[i].language.name == "fr") {
-            title.innerText = jsonEspece.names[i].name
+            title.innerHTML = `
+            ${jsonEspece.names[i].name}
+            <span class="numPokedexNational">#${numBeforeNumPokedexNational}${numPokedexNational}</span>
+            `
         }
     }
 
