@@ -47,7 +47,7 @@ async function aleaPokemon() {
     for (i = 0 ; i < 5; i++) {
         //Création d'un nombre aléatoire en fonction du nombre total de pokémon (+ 1 a la fin pour éviter le 0)
         const nbAleaPokemon = Math.floor(Math.random() * 905) + 1;
-
+        //TODO:  Régler ce bug
         let initPokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${nbAleaPokemon}`);
         let pokeJson = await initPokemon.json();
 
@@ -74,7 +74,6 @@ async function aleaPokemon() {
                 linkPokepedia.href = `https://www.pokepedia.fr/${especeJson.names[i].name}`;
             }
         }
-        nomPokemon.innerText = especeJson.names[4].name
         linkPokepedia.append(imagePokemon, nomPokemon);
         divLePokemon.append(linkPokepedia);
         divAllPokemon.append(divLePokemon);
