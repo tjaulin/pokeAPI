@@ -111,9 +111,6 @@ async function showPokedex() {
     divRechercherPokemon.classList.add("rechercherPokemon");
     divRechercherPokemon.innerHTML = `
     <div class="divInputRechercherPokemon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-        </svg>
         <input type="text" onkeyup="rechercherPokemon()" id="maRecherchePokemon" name="search"
             placeholder="Rechercher un pokemon…" autocomplete="off"
             aria-label="Rechercher un pokemon parmi le contenu du site"/>
@@ -182,7 +179,21 @@ async function showPokedex() {
         const divNewGeneration = document.createElement("div");
         divNewGeneration.classList.add("generationSeparator");
         const iconeGeneration = document.createElement("i");
-        iconeGeneration.classList.add("bi", "bi-chevron-down");
+        iconeGeneration.classList.add("fa-solid", "fa-chevron-down");
+        iconeGeneration.addEventListener("click", ()=>{
+            iconeGeneration.classList.toggle("fa-chevron-right");
+            iconeGeneration.classList.toggle("fa-chevron-down");
+
+            if (iconeGeneration.classList.contains("fa-chevron-right")) {
+                let lePokemon = document.getElementsByClassName("lePokemon");
+
+                for (i = 0; i < lePokemon.length; i++) { 
+                    lePokemon[i].style.display="none";
+                }
+            } else {
+                lePokemon[i].style.display="flex";
+            }
+        });
         divNewGeneration.append(iconeGeneration);
         const titleNewGeneraton = document.createElement("p")
         titleNewGeneraton.classList.add("titleGenerationSeparator")
@@ -192,9 +203,12 @@ async function showPokedex() {
                 titleNewGeneraton.innerText = "1ère génération"
                 divNewGeneration.append(titleNewGeneraton, hrNewGeneration);
                 divPokedex.append(divNewGeneration);
+                if (i <= 151) {
+                    //TODO Chevron display: none; 
+                }
                 break;
-                case 151 :
-                    titleNewGeneraton.innerText = "2ème génération"
+            case 151 :
+                titleNewGeneraton.innerText = "2ème génération"
                 divNewGeneration.append(titleNewGeneraton, hrNewGeneration);
                 divPokedex.append(divNewGeneration);
                 break;
@@ -203,17 +217,17 @@ async function showPokedex() {
                 divNewGeneration.append(titleNewGeneraton, hrNewGeneration);
                 divPokedex.append(divNewGeneration);
                 break;
-                case 386 :
-                    titleNewGeneraton.innerText = "4ème génération"
+            case 386 :
+                titleNewGeneraton.innerText = "4ème génération"
                 divNewGeneration.append(titleNewGeneraton, hrNewGeneration);
                 divPokedex.append(divNewGeneration);
                 break;
-                case 493 :
-                    titleNewGeneraton.innerText = "5ème génération"
+            case 493 :
+                titleNewGeneraton.innerText = "5ème génération"
                 divNewGeneration.append(titleNewGeneraton, hrNewGeneration);
                 divPokedex.append(divNewGeneration);
                 break;
-                case 649 :
+            case 649 :
                 titleNewGeneraton.innerText = "6ème génération"
                 divNewGeneration.append(titleNewGeneraton, hrNewGeneration);
                 divPokedex.append(divNewGeneration);

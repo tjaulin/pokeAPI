@@ -40,14 +40,12 @@ nav {
     border: 3px solid white;
 }
 
-::-moz-scr
-
-.navbar-collapse .navbar-nav .nav-item {
-    cursor: pointer;
-}
-
 .content {
     height: 50vh;
+}
+
+.navPokedex {
+    cursor: pointer;
 }
 
 .btnRetour {
@@ -180,8 +178,15 @@ nav {
 }
 
 .generationSeparator {
+    position: relative;
     width: 100%;
     margin: 2rem 0 1rem 0;
+}
+
+.generationSeparator i {
+    position: absolute;
+    bottom: 50%;
+    left: 0;
 }
 
 /* Fiche Pokemon */
