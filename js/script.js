@@ -10,6 +10,8 @@
 //TODO Check la vidéo
 //TODO https://www.youtube.com/watch?v=cNmn72kiZWU
 //TODO Le Repo : https://github.com/arslanah99/Pokedex-Tutorial
+//TODO https://www.youtube.com/watch?v=Iz5iNOMCIjY
+//TODO Le Repo : https://github.com/Kirti-salunkhe/PokemonApp
 
 //TODO Rechercher dans le pokedex
 //TODO https://fr.acervolima.com/barre-de-recherche-utilisant-html-css-et-javascript/
