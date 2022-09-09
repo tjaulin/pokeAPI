@@ -71,6 +71,10 @@ nav {
     color: white;
 }
 
+.fa-chevron-down, .fa-chevron-right {
+    cursor: pointer;
+}
+
 /* Accueil */
 
 .divPresentation {

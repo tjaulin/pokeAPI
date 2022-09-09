@@ -170,32 +170,20 @@ async function showPokedex() {
         const jsonPokemon = jsonPokemons[i];
         const jsonEspece = jsonEspeces[i];
         const divLePokemon = document.createElement("div");
-        divLePokemon.classList.add("lePokemon");        
-        divLePokemon.addEventListener("click", pokemonSheet.bind(null, jsonPokemon, jsonEspece));
+        divLePokemon.classList.add("lePokemon");
+        //Ici on ajoute une classe a la div permettant de savoir dans quel génération le pokemon est
+        let generationPokemon = jsonEspece.generation.name;
+        divLePokemon.classList.add(`${generationPokemon}`);
+        divLePokemon.addEventListener("click", pokemonSheet.bind(null, jsonPokemon, jsonEspece, "pokedex"));
         // https://askcodez.com/comment-passer-des-arguments-a-la-methode-addeventlistener-de-la-fonction-decouteur.html
         const imagePokemon = document.createElement("img");
         imagePokemon.src = jsonPokemon.sprites.other.home.front_default
         const nomPokemon = document.createElement("p");
         nomPokemon.classList.add("pLePokemon");
-        
         const divNewGeneration = document.createElement("div");
         divNewGeneration.classList.add("generationSeparator");
         const iconeGeneration = document.createElement("i");
         iconeGeneration.classList.add("fa-solid", "fa-chevron-down");
-        iconeGeneration.addEventListener("click", ()=>{
-            iconeGeneration.classList.toggle("fa-chevron-right");
-            iconeGeneration.classList.toggle("fa-chevron-down");
-
-            if (iconeGeneration.classList.contains("fa-chevron-right")) {
-                let lePokemon = document.getElementsByClassName("lePokemon");
-
-                for (i = 0; i < lePokemon.length; i++) { 
-                    lePokemon[i].style.display="none";
-                }
-            } else {
-                lePokemon[i].style.display="flex";
-            }
-        });
         divNewGeneration.append(iconeGeneration);
         const titleNewGeneraton = document.createElement("p")
         titleNewGeneraton.classList.add("titleGenerationSeparator")
@@ -203,48 +191,156 @@ async function showPokedex() {
         switch (i) {
             case 0 :
                 titleNewGeneraton.innerText = "1ère génération"
+                iconeGeneration.classList.add("icone_generation_1");
                 divNewGeneration.append(titleNewGeneraton, hrNewGeneration);
                 divPokedex.append(divNewGeneration);
-                if (i <= 151) {
-                    //TODO Chevron display: none; 
-                }
                 break;
             case 151 :
                 titleNewGeneraton.innerText = "2ème génération"
+                iconeGeneration.classList.add("icone_generation_2");
                 divNewGeneration.append(titleNewGeneraton, hrNewGeneration);
                 divPokedex.append(divNewGeneration);
                 break;
             case 251 :
                 titleNewGeneraton.innerText = "3ème génération"
+                iconeGeneration.classList.add("icone_generation_3");
                 divNewGeneration.append(titleNewGeneraton, hrNewGeneration);
                 divPokedex.append(divNewGeneration);
                 break;
             case 386 :
                 titleNewGeneraton.innerText = "4ème génération"
+                iconeGeneration.classList.add("icone_generation_4");
                 divNewGeneration.append(titleNewGeneraton, hrNewGeneration);
                 divPokedex.append(divNewGeneration);
                 break;
             case 493 :
                 titleNewGeneraton.innerText = "5ème génération"
+                iconeGeneration.classList.add("icone_generation_5");
                 divNewGeneration.append(titleNewGeneraton, hrNewGeneration);
                 divPokedex.append(divNewGeneration);
                 break;
             case 649 :
                 titleNewGeneraton.innerText = "6ème génération"
+                iconeGeneration.classList.add("icone_generation_6");
                 divNewGeneration.append(titleNewGeneraton, hrNewGeneration);
                 divPokedex.append(divNewGeneration);
                 break;
             case 721 :
                 titleNewGeneraton.innerText = "7ème génération"
+                iconeGeneration.classList.add("icone_generation_7");
                 divNewGeneration.append(titleNewGeneraton, hrNewGeneration);
                 divPokedex.append(divNewGeneration);
                 break;
             case 809 :
                 titleNewGeneraton.innerText = "8ème génération"
+                iconeGeneration.classList.add("icone_generation_8");
                 divNewGeneration.append(titleNewGeneraton, hrNewGeneration);
                 divPokedex.append(divNewGeneration);
                 break;
         }
+
+        //réduit les pokemon de la génération "séléctionner"
+        iconeGeneration.addEventListener("click", ()=>{
+            iconeGeneration.classList.toggle("fa-chevron-right");
+            iconeGeneration.classList.toggle("fa-chevron-down");
+            let generationNumber = iconeGeneration.classList.value
+            let pokemonGeneration1 = document.getElementsByClassName("generation-i");
+            let pokemonGeneration2 = document.getElementsByClassName("generation-ii");
+            let pokemonGeneration3 = document.getElementsByClassName("generation-iii");
+            let pokemonGeneration4 = document.getElementsByClassName("generation-iv");
+            let pokemonGeneration5 = document.getElementsByClassName("generation-v");
+            let pokemonGeneration6 = document.getElementsByClassName("generation-vi");
+            let pokemonGeneration7 = document.getElementsByClassName("generation-vii");
+            let pokemonGeneration8 = document.getElementsByClassName("generation-viii");
+            
+            if (iconeGeneration.classList.contains("fa-chevron-right")) {
+                switch (generationNumber) {
+                    case 'fa-solid icone_generation_1 fa-chevron-right':
+                        for (i = 0; i < pokemonGeneration1.length; i++) { 
+                            pokemonGeneration1[i].style.display="none";
+                        }
+                        break;
+                    case 'fa-solid icone_generation_2 fa-chevron-right':
+                        for (i = 0; i < pokemonGeneration2.length; i++) { 
+                            pokemonGeneration2[i].style.display="none";
+                        }
+                        break;
+                    case 'fa-solid icone_generation_3 fa-chevron-right':
+                        for (i = 0; i < pokemonGeneration3.length; i++) { 
+                            pokemonGeneration3[i].style.display="none";
+                        }
+                        break;
+                    case 'fa-solid icone_generation_4 fa-chevron-right':
+                        for (i = 0; i < pokemonGeneration4.length; i++) { 
+                            pokemonGeneration4[i].style.display="none";
+                        }
+                        break;
+                    case 'fa-solid icone_generation_5 fa-chevron-right':
+                        for (i = 0; i < pokemonGeneration5.length; i++) { 
+                            pokemonGeneration5[i].style.display="none";
+                        }
+                        break;
+                    case 'fa-solid icone_generation_6 fa-chevron-right':
+                        for (i = 0; i < pokemonGeneration6.length; i++) { 
+                            pokemonGeneration6[i].style.display="none";
+                        }
+                        break;
+                    case 'fa-solid icone_generation_7 fa-chevron-right':
+                        for (i = 0; i < pokemonGeneration7.length; i++) { 
+                            pokemonGeneration7[i].style.display="none";
+                        }
+                        break;
+                    case 'fa-solid icone_generation_8 fa-chevron-right':
+                        for (i = 0; i < pokemonGeneration8.length; i++) { 
+                            pokemonGeneration8[i].style.display="none";
+                        }
+                        break;
+                }
+            } else {
+                switch (generationNumber) {
+                    case 'fa-solid icone_generation_1 fa-chevron-down':
+                        for (i = 0; i < pokemonGeneration1.length; i++) { 
+                            pokemonGeneration1[i].style.display="flex";
+                        }
+                        break;
+                    case 'fa-solid icone_generation_2 fa-chevron-down':
+                        for (i = 0; i < pokemonGeneration2.length; i++) { 
+                            pokemonGeneration2[i].style.display="flex";
+                        }
+                        break;
+                    case 'fa-solid icone_generation_3 fa-chevron-down':
+                        for (i = 0; i < pokemonGeneration3.length; i++) { 
+                            pokemonGeneration3[i].style.display="flex";
+                        }
+                        break;
+                    case 'fa-solid icone_generation_4 fa-chevron-down':
+                        for (i = 0; i < pokemonGeneration4.length; i++) { 
+                            pokemonGeneration4[i].style.display="flex";
+                        }
+                        break;
+                    case 'fa-solid icone_generation_5 fa-chevron-down':
+                        for (i = 0; i < pokemonGeneration5.length; i++) { 
+                            pokemonGeneration5[i].style.display="flex";
+                        }
+                        break;
+                    case 'fa-solid icone_generation_6 fa-chevron-down':
+                        for (i = 0; i < pokemonGeneration6.length; i++) { 
+                            pokemonGeneration6[i].style.display="flex";
+                        }
+                        break;
+                    case 'fa-solid icone_generation_7 fa-chevron-down':
+                        for (i = 0; i < pokemonGeneration7.length; i++) { 
+                            pokemonGeneration7[i].style.display="flex";
+                        }
+                        break;
+                    case 'fa-solid icone_generation_8 fa-chevron-down':
+                        for (i = 0; i < pokemonGeneration8.length; i++) { 
+                            pokemonGeneration8[i].style.display="flex";
+                        }
+                        break;
+                }
+            }
+        });
         
         for (let i = 0; i < jsonEspece.names.length; i++) {
             if (jsonEspece.names[i].language.name == "fr") {
@@ -257,15 +353,22 @@ async function showPokedex() {
     sectionPage.append(divRechercherPokemon, divPokedex);
 }
 
-async function pokemonSheet(jsonPokemon, jsonEspece) {
+async function pokemonSheet(jsonPokemon, jsonEspece, where = null, generation) {
     
     divContentSheetPokemon.remove();
     sectionPage.innerHTML = "";
+
     /* Création du bouton retour */
     const btnRetour = document.createElement("div");
     btnRetour.classList.add("btnRetour");
     btnRetour.innerText = "Retour";
-    btnRetour.setAttribute('onclick', `returnPokedex(${true})`);
+    if (where == "pokedex") {
+        btnRetour.setAttribute('onclick', `returnPokedex(${true})`);
+    }
+
+    if (where == "generationSelections") {
+        btnRetour.setAttribute('onclick', `whatGeneration(${generation})`);
+    }
     
     divPokedex.remove();
     let numPokedexNational = 0;
@@ -604,6 +707,7 @@ async function whatGeneration(generation) {
         const jsonEspece = jsonEspeces[i];
         const divLePokemon = document.createElement("div");
         divLePokemon.classList.add("lePokemon");
+        divLePokemon.addEventListener("click", pokemonSheet.bind(null, jsonPokemon, jsonEspece, "generationSelections", generation));
         const imagePokemon = document.createElement("img");
         imagePokemon.src = jsonPokemon.sprites.other.home.front_default
         const nomPokemon = document.createElement("p");
